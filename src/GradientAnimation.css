@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Menlo&display=swap');
+
+.gradient-container {
+  position: relative;
+  width: 561px;
+  height: 48px;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.gradient-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  filter: blur(30px);
+  transition: background 3s linear; /* Smooth transition */
+}
+
+.content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 10px;
+  background: transparent;
+}
+
+.text-output {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  flex-grow: 1;
+  padding: 0 10px;
+  background: transparent;
+  color: #fff;
+  font-size: 16px;
+  font-family: 'Menlo', monospace;
+}
+
+.typing-indicator {
+  font-size: 16px;
+  font-family: 'Menlo', monospace;
+  color: #007aff; /* Blue color similar to macOS */
+  margin-left: 5px;
+  animation: blink 1s steps(1, end) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.typed-text {
+  font-size: 16px;
+  font-family: 'Menlo', monospace;
+}
+
+.mic-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  outline: none;
+  padding: 0 10px;
+  color: #333;
+}
+
+.mic-button img {
+  width: 20px;
+  height: 20px;
+  filter: invert(1); /* Invert color to white */
+}
+
+.mic-button.active img {
+  filter: invert(1) sepia(1) saturate(5) hue-rotate(180deg); /* Change color when active */
+}

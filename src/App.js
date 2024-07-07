@@ -1,23 +1,118 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import GradientAnimation from './GradientAnimation';
+
+const themes = {
+  light: {
+    body: '#f7f7f7',
+    text: '#333333',
+    background: '#ffffff',
+    shadow: 'rgba(0, 0, 0, 0.1)',
+    secondaryText: '#666666',
+  },
+  dark: {
+    body: '#181818',
+    text: '#ffffff',
+    background: '#282828',
+    shadow: 'rgba(0, 0, 0, 0.7)',
+    secondaryText: '#999999',
+  },
+};
 
 function App() {
+  const [theme, setTheme] = useState(themes.light);
+  const [themeMode, setThemeMode] = useState('system');
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const savedThemeMode = localStorage.getItem('themeMode') || 'system';
+    setThemeMode(savedThemeMode);
+  }, []);
+
+  useEffect(() => {
+    const applyTheme = () => {
+      if (themeMode === 'system') {
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        setTheme(mediaQuery.matches ? themes.dark : themes.light);
+        mediaQuery.addEventListener('change', handleSystemThemeChange);
+        return () => mediaQuery.removeEventListener('change', handleSystemThemeChange);
+      } else {
+        setTheme(themeMode === 'dark' ? themes.dark : themes.light);
+      }
+    };
+
+    const handleSystemThemeChange = (e) => {
+      setTheme(e.matches ? themes.dark : themes.light);
+    };
+
+    applyTheme();
+  }, [themeMode]);
+
+  useEffect(() => {
+    document.body.style.backgroundColor = theme.body;
+    document.body.style.color = theme.text;
+  }, [theme]);
+
+  const handleThemeChange = (mode) => {
+    setThemeMode(mode);
+    localStorage.setItem('themeMode', mode);
+  };
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="container">
+      <header className="header">
+        <div className="logo">
+          <img src="/magic-wand.svg" alt="Logo" className="magic-wand" />
+          <div className="logo-text">MacGic</div>
+        </div>
+        <nav className={`nav-links ${menuOpen ? 'open' : ''}`}>
+          <a href="#store">Store</a>
+          <a href="#pro">Pro</a>
+          <a href="#teams">Teams</a>
+          <a href="#developers">Developers</a>
+          <a href="#changelog">Changelog</a>
+          <a href="#blog">Blog</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#about">About</a>
+          <a href="#updates">Updates</a>
+          <a href="#login">Log in</a>
+          <button className="download-button">
+            <img src="/octocat.png" alt="GitHub Logo" />
+            GitHub Download
+          </button>
+        </nav>
+        <button className={`hamburger ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+          <div className="bar"></div>
+          <div className="bar"></div>
+          <div className="bar"></div>
+        </button>
       </header>
+      <main className="main">
+        <h2 className="title">Makes it seem like MacGic <span className="sparkle">✨</span></h2>
+        <p className="subtitle">A minimalist approach to powerful speech recognition</p>
+        <GradientAnimation />
+        <ul className="feature-list">
+          <li className="feature-item">Real-time speech to text</li>
+          <li className="feature-item">Easy integration with macOS</li>
+          <li className="feature-item">Minimalist design for a seamless experience</li>
+        </ul>
+      </main>
+      <footer className="footer">
+        <div className="theme-toggle">
+          <button onClick={() => handleThemeChange('light')} className={themeMode === 'light' ? 'active' : ''}>Light</button>
+          <button onClick={() => handleThemeChange('dark')} className={themeMode === 'dark' ? 'active' : ''}>Dark</button>
+          <button onClick={() => handleThemeChange('system')} className={themeMode === 'system' ? 'active' : ''}>System</button>
+        </div>
+        <div className="footer-links">
+          <a href="#privacy">Privacy Policy</a>
+          <a href="#terms">Terms of Service</a>
+          <a href="#contact">Contact Us</a>
+        </div>
+      </footer>
     </div>
   );
 }
