@@ -66,7 +66,6 @@ function App() {
     <div className="container">
       <header className="header">
         <div className="logo">
-          <img src="/magic-wand.svg" alt="Logo" className="magic-wand" />
           <div className="logo-text">MacGic</div>
         </div>
         <nav className={`nav-links ${menuOpen ? 'open' : ''}`}>
@@ -92,13 +91,15 @@ function App() {
         </button>
       </header>
       <main className="main">
-        <h2 className="title">Makes it seem like MacGic <span className="sparkle">✨</span></h2>
-        <p className="subtitle">A minimalist approach to powerful speech recognition</p>
+        <h2 className="title">
+          Makes it seem like MacGic 
+        </h2>
+        <p className="subtitle">A minimalist approach to whole system automation</p>
         <GradientAnimation />
         <ul className="feature-list">
-          <li className="feature-item">Real-time speech to text</li>
-          <li className="feature-item">Easy integration with macOS</li>
-          <li className="feature-item">Minimalist design for a seamless experience</li>
+          <li className="feature-item">Automate your entire system with voice commands</li>
+          <li className="feature-item">Effortlessly control your macOS environment</li>
+          <li className="feature-item">Integrate voice-activated workflows for enhanced productivity</li>
         </ul>
       </main>
       <footer className="footer">
