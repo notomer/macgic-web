@@ -1,0 +1,245 @@
+@import url("https://fonts.googleapis.com/css2?family=Menlo&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Animations Layer */
+@layer utilities {
+  @keyframes hamburgerOpen {
+    0% {
+      opacity: 0;
+      transform: translateY(-2.5rem);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-hamburgerOpen {
+    animation: hamburgerOpen 0.3s ease;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .animate-blink {
+    animation: blink 1s steps(1, end) infinite;
+  }
+}
+
+body {
+  @apply m-0 font-mono bg-gray-50 text-gray-900;
+}
+
+.container {
+  @apply flex flex-col items-center min-h-screen px-4;
+}
+
+.header {
+  @apply w-full py-2 px-4 bg-white bg-opacity-10 backdrop-blur-sm flex justify-between items-center shadow-md rounded-xl mt-5;
+}
+
+.logo {
+  @apply flex items-center;
+}
+
+.logo-text {
+  @apply text-red-500 text-2xl font-bold;
+}
+
+.nav-links {
+  @apply flex items-center gap-4;
+}
+
+.nav-links a {
+  @apply text-white no-underline text-base transition-colors;
+}
+
+.nav-links a:hover {
+  @apply text-red-500;
+}
+
+.download-button {
+  @apply bg-white text-black border-none rounded-md px-4 py-2 text-base flex items-center cursor-pointer transition-colors;
+}
+
+.download-button img {
+  @apply h-4 mr-2;
+}
+
+.download-button:hover {
+  @apply bg-red-500 text-white;
+}
+
+.hamburger {
+  @apply hidden flex-col cursor-pointer p-2;
+}
+
+.hamburger .bar {
+  @apply h-0.5 w-6 bg-gray-900 my-1 transition-all;
+}
+
+.hamburger.open .bar:nth-child(1) {
+  @apply transform -rotate-45 translate-x-1.5 translate-y-1.5;
+}
+
+.hamburger.open .bar:nth-child(2) {
+  @apply opacity-0;
+}
+
+.hamburger.open .bar:nth-child(3) {
+  @apply transform rotate-45 translate-x-1.5 -translate-y-1.5;
+}
+
+.nav-links.open a {
+  @apply animate-hamburgerOpen ease-in-out;
+}
+
+.main {
+  @apply flex-1 w-full max-w-4xl py-10 flex flex-col items-center text-center;
+}
+
+.title {
+  @apply text-3xl mb-5 flex items-center;
+}
+
+.subtitle {
+  @apply text-lg text-gray-500 mb-10;
+}
+
+.feature-list {
+  @apply list-none p-0 mb-10 flex flex-wrap justify-center;
+}
+
+.feature-item {
+  @apply text-base text-gray-900 bg-white bg-opacity-10 backdrop-blur-sm border border-gray-300 rounded-md p-5 m-2 flex-none shadow-md transition-transform;
+}
+
+.feature-item:hover {
+  @apply -translate-y-2;
+}
+
+.footer {
+  @apply w-full py-5 bg-white shadow-md flex flex-col justify-center items-center;
+}
+
+.theme-toggle {
+  @apply flex justify-center items-center mb-5;
+}
+
+.theme-toggle button {
+  @apply bg-none border border-gray-300 px-4 py-2 mx-2 rounded-md cursor-pointer transition-colors;
+}
+
+.theme-toggle button.active {
+  @apply bg-blue-500 border-blue-500 text-white;
+}
+
+.footer-links {
+  @apply flex justify-center mb-5;
+}
+
+.footer-links a {
+  @apply mx-4 text-gray-500;
+}
+
+.footer-links a:hover {
+  @apply text-gray-900;
+}
+
+.gradient-container {
+  @apply relative w-80 h-12 rounded-xl overflow-hidden mb-10;
+}
+
+.gradient-background {
+  @apply absolute w-full h-full rounded-xl blur-lg transition-all;
+}
+
+.content {
+  @apply relative flex justify-center items-center h-full;
+}
+
+.input-container {
+  @apply flex items-center w-full px-2 bg-transparent;
+}
+
+.text-output {
+  @apply flex items-center h-12 flex-grow px-2 bg-transparent text-gray-900 text-base font-mono;
+}
+
+.typing-indicator {
+  @apply text-base font-mono text-blue-500 ml-1 animate-blink;
+}
+
+.mic-button {
+  @apply bg-none border-none text-2xl cursor-pointer outline-none px-2 text-gray-900;
+}
+
+.mic-button img {
+  @apply w-5 h-5 filter-invert;
+}
+
+.mic-button.active img {
+  @apply filter-invert filter-sepia filter-saturate filter-hue-rotate-180;
+}
+
+@media (max-width: 768px) {
+  .feature-item {
+    @apply flex-none w-2/5;
+  }
+
+  .gradient-container {
+    @apply w-full h-auto rounded-lg;
+  }
+
+  .main {
+    @apply ml-0;
+  }
+
+  .nav-links {
+    @apply hidden;
+  }
+
+  .hamburger {
+    @apply flex;
+  }
+
+  .nav-links.open {
+    @apply flex flex-col absolute top-16 right-5 bg-white bg-opacity-10 backdrop-blur-sm p-2 rounded-md shadow-md;
+  }
+
+  .nav-links.open a {
+    @apply my-2;
+  }
+
+  .nav-links.open .download-button {
+    @apply mt-2;
+  }
+}
+
+@media (max-width: 480px) {
+  .feature-item {
+    @apply w-full;
+  }
+
+  .gradient-container {
+    @apply h-auto;
+  }
+
+  .logo {
+    @apply text-base;
+  }
+
+  .nav-links a {
+    @apply text-sm;
+  }
+
+  .download-button {
+    @apply px-2 py-1 text-sm;
+  }
+}
