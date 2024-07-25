@@ -2,6 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import axios from "axios";
 import {
   Drawer,
   DrawerClose,
@@ -11,14 +12,43 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from "./drawer";
+import { Alert, AlertTitle, AlertDescription } from "./alert";
 import confetti from "canvas-confetti";
 
 const Header: React.FC = () => {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [version, setVersion] = useState("1.0.0");
+  const [commitHash, setCommitHash] = useState("abcd1234");
+  const [showAlert, setShowAlert] = useState(false);
+  const [fadeOut, setFadeOut] = useState(false);
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+
+    const fetchCommitDetails = async () => {
+      try {
+        const response = await axios.get(
+          "https://api.github.com/repos/notomer/MacGic/branches/master",
+          {
+            headers: {
+              "User-Agent": "YourAppName",
+            },
+          }
+        );
+        const commitData = response.data.commit;
+        const commitMessage = commitData.commit.message.split(' ')[0]; // Assuming version is part of the commit message
+        const commitSha = commitData.sha.substring(0, 7); // Get the first 7 characters of the commit hash
+        setVersion(commitMessage);
+        setCommitHash(commitSha);
+      } catch (error) {
+        console.error("Error fetching commit details:", error);
+      }
+    };
+
+    fetchCommitDetails();
+  }, []);
 
   const handleDownload = () => {
     // Trigger confetti
@@ -38,6 +68,13 @@ const Header: React.FC = () => {
 
     // Close the drawer after download
     setIsDrawerOpen(false);
+
+    // Show the alert
+    setShowAlert(true);
+    setTimeout(() => {
+      setFadeOut(true);
+      setTimeout(() => setShowAlert(false), 2000); // Hide the alert after 2 seconds of fading out
+    }, 4000); // Start fading out after 4 seconds
   };
 
   if (!mounted) return null;
@@ -57,14 +94,14 @@ const Header: React.FC = () => {
               className="relative group text-gray-800 dark:text-white"
             >
               <span className="hover-trigger">About</span>
-              <span className="absolute left-1/2 bottom-0 w-0 h-0.5 bg-gray-800 dark:bg-gray-100 transition-all duration-150 group-hover:w-full group-hover:left-0"></span>
+              <span className="absolute left-1/2 bottom-0 w-0 h-[1px] bg-gray-800 dark:bg-gray-100 transition-all duration-150 group-hover:w-full group-hover:left-0"></span>
             </a>
             <a
               href="#"
               className="relative group text-gray-800 dark:text-white"
             >
               <span className="hover-trigger">Updates</span>
-              <span className="absolute left-1/2 bottom-0 w-0 h-0.5 bg-gray-800 dark:bg-gray-100 transition-all duration-150 group-hover:w-full group-hover:left-0"></span>
+              <span className="absolute left-1/2 bottom-0 w-0 h-[1px] bg-gray-800 dark:bg-gray-100 transition-all duration-150 group-hover:w-full group-hover:left-0"></span>
             </a>
             <a
               href="#"
@@ -83,7 +120,9 @@ const Header: React.FC = () => {
         <DrawerContent>
           <DrawerHeader>
             <DrawerTitle>Confirm Download</DrawerTitle>
-            <DrawerDescription>This action cannot be undone.</DrawerDescription>
+            <DrawerDescription>
+              Version {version} | Commit {commitHash}
+            </DrawerDescription>
             <DrawerClose asChild>
               <button
                 onClick={() => setIsDrawerOpen(false)}
@@ -103,6 +142,21 @@ const Header: React.FC = () => {
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
+      {showAlert && (
+        <div
+          className={`fixed bottom-4 right-4 w-full max-w-sm z-50 transition-opacity duration-1000 ease-out ${
+            fadeOut ? "opacity-0" : "opacity-100"
+          }`}
+        >
+          <Alert>
+            <span className="h-4 w-4">🫶</span>
+            <AlertTitle>Thank you!</AlertTitle>
+            <AlertDescription>
+              Thank you for downloading MacGic! If you have any feedback please email me.
+            </AlertDescription>
+          </Alert>
+        </div>
+      )}
     </header>
   );
 };
