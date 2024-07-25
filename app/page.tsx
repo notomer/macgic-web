@@ -9,7 +9,7 @@ export default function Home() {
       <Header />
       <main className="flex flex-1 flex-col items-start justify-center px-4 py-10 mx-auto max-w-3xl">
         <h2 className="text-5xl font-extrabold mb-4">
-          You don’t have to be a brain surgeon to work at MacGic.
+          Control your Mac simply by asking.
         </h2>
         <p className="text-2xl mb-8">
           We are looking for talent across all disciplines to solve new

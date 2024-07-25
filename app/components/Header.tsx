@@ -2,7 +2,6 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import {
   Drawer,
   DrawerClose,
@@ -12,9 +11,6 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from "./drawer";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "./hover-card";
-
-import { HoverBorderGradient } from "./hover-border-gradient";
 import confetti from "canvas-confetti";
 
 const Header: React.FC = () => {
@@ -50,33 +46,29 @@ const Header: React.FC = () => {
     <header className="w-full py-4 bg-white dark:bg-gray-800 border-b border-gray-300 dark:border-gray-600">
       <div className="container mx-auto flex justify-between items-center px-4">
         <div className="flex items-center">
-          <Image
-            src="/logo.png"
-            alt="Logo"
-            width={32}
-            height={32}
-            className="mr-4"
-          />
           <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
             MacGic
           </h1>
         </div>
         <div className="flex items-center space-x-4">
           <nav className="flex items-center space-x-4">
-            <HoverCard>
-              <HoverCardTrigger>Hover</HoverCardTrigger>
-              <HoverCardContent>
-                <a href="#" className="text-gray-800 dark:text-white">
-                  About
-                </a>
-              </HoverCardContent>
-            </HoverCard>
-            <a href="#" className="text-gray-800 dark:text-white">
-              Updates
+            <a
+              href="#"
+              className="relative group text-gray-800 dark:text-white"
+            >
+              <span className="hover-trigger">About</span>
+              <span className="absolute left-1/2 bottom-0 w-0 h-0.5 bg-gray-800 dark:bg-gray-100 transition-all duration-150 group-hover:w-full group-hover:left-0"></span>
             </a>
             <a
               href="#"
-              className="px-4 py-2 border border-gray-800 dark:border-gray-100 text-gray-800 dark:text-gray-100 rounded-full inline-block"
+              className="relative group text-gray-800 dark:text-white"
+            >
+              <span className="hover-trigger">Updates</span>
+              <span className="absolute left-1/2 bottom-0 w-0 h-0.5 bg-gray-800 dark:bg-gray-100 transition-all duration-150 group-hover:w-full group-hover:left-0"></span>
+            </a>
+            <a
+              href="#"
+              className="px-4 py-2 border border-gray-800 dark:border-gray-100 text-gray-800 dark:text-gray-100 rounded-full inline-block hover:bg-gray-800 hover:text-white dark:hover:bg-gray-100 dark:hover:text-black transition-colors"
               onClick={(e) => {
                 e.preventDefault();
                 setIsDrawerOpen(true);
@@ -93,7 +85,7 @@ const Header: React.FC = () => {
             <DrawerTitle>Confirm Download</DrawerTitle>
             <DrawerDescription>This action cannot be undone.</DrawerDescription>
             <DrawerClose asChild>
-            <button
+              <button
                 onClick={() => setIsDrawerOpen(false)}
                 className="absolute top-4 right-4 w-8 h-8 p-2 rounded-full border border-gray-800 dark:border-white text-gray-800 dark:text-white flex items-center justify-center"
               >
