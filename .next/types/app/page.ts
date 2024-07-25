@@ -1,4 +1,4 @@
-// File: /Users/omer/Library/Mobile Documents/com~apple~CloudDocs/Local Repo/macgicweb/app/page.tsx
+// File: /Users/omer/Library/Mobile Documents/com~apple~CloudDocs/Local Repo/macgic-web/app/page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
