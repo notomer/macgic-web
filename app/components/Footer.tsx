@@ -77,10 +77,10 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap justify-between">
           <div className="w-full md:w-1/3 mb-6 md:mb-0">
-            <h3 className="text-sm font-thin text-gray-600 dark:text-gray-400 mb-2">Company</h3>
+            <h3 className="text-sm font-thin text-gray-600 dark:text-gray-400 mb-2">MacGic</h3>
             <ul>
-              <li><a href="#" className="text-gray-800 dark:text-gray-100 hover:text-gray-500 transition-colors">Careers</a></li>
-              <li><a href="#" className="text-gray-800 dark:text-gray-100 hover:text-gray-500 transition-colors">Blog</a></li>
+              <li><a href="#" className="text-gray-800 dark:text-gray-100 hover:text-gray-500 transition-colors">About</a></li>
+              <li><a href="#" className="text-gray-800 dark:text-gray-100 hover:text-gray-500 transition-colors">Updates</a></li>
             </ul>
           </div>
           <div className="w-full md:w-1/3 mb-6 md:mb-0">

@@ -119,7 +119,7 @@ const Header: React.FC = () => {
       <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
         <DrawerContent>
           <DrawerHeader>
-            <DrawerTitle>Confirm Download</DrawerTitle>
+            <DrawerTitle>Download MacGic</DrawerTitle>
             <DrawerDescription>
               Version {version} | Commit {commitHash}
             </DrawerDescription>
@@ -137,7 +137,7 @@ const Header: React.FC = () => {
               onClick={handleDownload}
               className="px-4 py-2 border border-gray-800 dark:border-gray-100 text-gray-800 dark:text-gray-100 rounded-full"
             >
-              Confirm Download
+              Download MacGic
             </button>
           </DrawerFooter>
         </DrawerContent>
