@@ -84,14 +84,17 @@
   outline: none;
   padding: 0 10px;
   color: #333;
+  transition: filter 0.3s ease, color 0.3s ease;
 }
 
 .mic-button img {
   width: 20px;
   height: 20px;
-  filter: invert(1);
+  filter: invert(100%);
+  transition: filter 0.3s ease;
+  
 }
 
 .mic-button.active img {
-  filter: invert(1) sepia(1) saturate(5) hue-rotate(180deg);
+  filter: brightness(0) saturate(100%) invert(32%) sepia(97%) saturate(2860%) hue-rotate(352deg) brightness(93%) contrast(99%);
 }

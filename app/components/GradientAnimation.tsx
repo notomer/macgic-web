@@ -58,6 +58,10 @@ const GradientAnimation = () => {
     return () => clearInterval(typeEffect);
   }, [charIndex, isDeleting, promptIndex]);
 
+  const handleMicClick = () => {
+    setIsMicrophoneActive(!isMicrophoneActive);
+  };
+
   return (
     <div className="gradient-container">
       <div className="gradient-background"></div>
@@ -69,7 +73,7 @@ const GradientAnimation = () => {
           </div>
           <button
             className={`mic-button ${isMicrophoneActive ? 'active' : ''}`}
-            onClick={() => setIsMicrophoneActive(!isMicrophoneActive)}
+            onClick={handleMicClick}
           >
             <img src="/mic.fill.png" alt="Mic" />
           </button>
