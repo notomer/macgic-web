@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.1",
+    "@radix-ui/react-hover-card": "^1.1.1",
     "@tabler/icons-react": "^3.11.0",
     "canvas-confetti": "^1.9.3",
     "class-variance-authority": "^0.7.0",
