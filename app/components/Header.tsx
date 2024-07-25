@@ -3,7 +3,17 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import DownloadDrawer from "./DownloadDrawer";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+} from "./drawer";
+import { HoverBorderGradient } from "./hover-border-gradient";
+import confetti from "canvas-confetti";
 
 const Header: React.FC = () => {
   const { theme, setTheme } = useTheme();
@@ -11,6 +21,26 @@ const Header: React.FC = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   useEffect(() => setMounted(true), []);
+
+  const handleDownload = () => {
+    // Trigger confetti
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 },
+    });
+
+    // Logic to download the file
+    const link = document.createElement("a");
+    link.href = "/path-to-your-file.zip"; // Replace with the path to your file
+    link.download = "file.zip"; // Replace with the desired file name
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    // Close the drawer after download
+    setIsDrawerOpen(false);
+  };
 
   if (!mounted) return null;
 
@@ -31,20 +61,39 @@ const Header: React.FC = () => {
           <nav className="flex items-center space-x-4">
             <a href="#" className="text-gray-800 dark:text-white">About</a>
             <a href="#" className="text-gray-800 dark:text-white">Updates</a>
-            <a
-              href="#"
+            <HoverBorderGradient
               onClick={(e) => {
                 e.preventDefault();
                 setIsDrawerOpen(true);
               }}
-              className="px-4 py-2 border border-gray-800 dark:border-white text-gray-800 dark:text-white rounded-full"
+              containerClassName="px-4 py-2 rounded-full"
             >
               Download
-            </a>
+            </HoverBorderGradient>
           </nav>
         </div>
       </div>
-      <DownloadDrawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
+      <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
+        <DrawerContent>
+          <DrawerHeader>
+            <DrawerTitle>Confirm Download</DrawerTitle>
+            <DrawerDescription>This action cannot be undone.</DrawerDescription>
+            <DrawerClose asChild>
+              <button
+                onClick={() => setIsDrawerOpen(false)}
+                className="absolute top-4 right-4 p-2 rounded-full border border-gray-800 dark:border-white text-gray-800 dark:text-white"
+              >
+                ✕
+              </button>
+            </DrawerClose>
+          </DrawerHeader>
+          <DrawerFooter>
+            <HoverBorderGradient onClick={handleDownload} containerClassName="px-4 py-2 rounded-full">
+              Confirm Download
+            </HoverBorderGradient>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
     </header>
   );
 };
