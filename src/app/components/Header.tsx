@@ -64,7 +64,7 @@ const Header: React.FC = () => {
         </div>
       </div>
       <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
-        <DrawerContent>
+        <DrawerContent className="bg-white">
           <DrawerHeader>
             <DrawerTitle>Confirm Download</DrawerTitle>
             <DrawerDescription>

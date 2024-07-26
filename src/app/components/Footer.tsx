@@ -73,7 +73,7 @@ const Footer: React.FC = () => {
           <div className="w-full md:w-1/3 mb-6 md:mb-0">
             <h3 className="text-sm font-thin text-gray-600 mb-2">Contact</h3>
             <ul>
-              <li><a href="mailto:your-email@example.com" className="text-gray-800 hover:text-gray-500 transition-colors">Email Now</a></li>
+              <li><a href="mailto:notomerkhan@gmail.com" className="text-gray-800 hover:text-gray-500 transition-colors">Email Now</a></li>
               <li><a href="https://github.com/notomer" className="text-gray-800 hover:text-gray-500 transition-colors">GitHub</a></li>
               <li><a href="https://linkedin.com/in/notomer" className="text-gray-800 hover:text-gray-500 transition-colors">LinkedIn</a></li>
               <li><a href="https://notomer.github.io" className="text-gray-800 hover:text-gray-500 transition-colors">Personal Portfolio</a></li>
@@ -98,7 +98,7 @@ const Footer: React.FC = () => {
         </div>
       </div>
       <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
-        <DrawerContent>
+        <DrawerContent className="bg-white">
           <DrawerHeader>
             <DrawerTitle>Download MacGic</DrawerTitle>
             <DrawerDescription>
