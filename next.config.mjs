@@ -5,11 +5,11 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    unoptimized: true, // Add this line for static export
+    unoptimized: true, // Ensures images work without optimization during export
   },
-  output: 'export', // Add this line for static export
-  assetPrefix: '/macgic-app/', // Add this line for GitHub Pages
-  basePath: '/macgic-app/', // Add this line for GitHub Pages
+  output: 'export', // Enables static export
+  assetPrefix: '/macgic-app/', // Sets the correct base path for GitHub Pages
+  basePath: '/macgic-app/', // Sets the base path for your project
 };
 
 export default nextConfig;
