@@ -75,7 +75,8 @@ const GradientAnimation = () => {
             className={`mic-button ${isMicrophoneActive ? 'active' : ''}`}
             onClick={handleMicClick}
           >
-            <img src="/mic.fill.png" alt="Mic" />
+            <img src="/mic.fill.white.png" alt="Mic White" className="mic-white" />
+            <img src="/mic.fill.orange.png" alt="Mic Orange" className="mic-orange" />
           </button>
         </div>
       </div>

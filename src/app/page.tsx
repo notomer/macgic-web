@@ -20,11 +20,11 @@ export default function Home() {
         <div className="w-full md:flex md:items-start md:justify-between">
           <div className="md:w-2/3 text-left">
             <p className="text-2xl mb-8">
-              With MacGic, you can automate your Mac using voice or typed commands. No more navigating through menus or searching through folders within folders.
+              With MacGic, you can automate your Mac using voice or typed
+              commands. No more navigating through menus or searching through
+              folders within folders.
             </p>
-            <p className="text-2xl mb-8">
-              Elevate your productivity with MacGic.
-            </p>
+            <p className="text-2xl mb-8">Elevate your productivity with MacGic.</p>
             <div>
               <a href="#features" className="text-lg underline flex items-center">
                 Learn More <span className="ml-2">↓</span>

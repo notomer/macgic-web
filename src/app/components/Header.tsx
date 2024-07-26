@@ -107,7 +107,7 @@ const Header: React.FC = () => {
         </div>
       </div>
       <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
-        <DrawerContent className="bg-white">
+        <DrawerContent>
           <DrawerHeader>
             <DrawerTitle>Download MacGic</DrawerTitle>
             <DrawerDescription>
@@ -142,7 +142,8 @@ const Header: React.FC = () => {
             <span className="h-4 w-4">🫶</span>
             <AlertTitle>Thank you!</AlertTitle>
             <AlertDescription>
-              Thank you for downloading MacGic! If you have any feedback please email me.
+              Thank you for downloading MacGic! If you have any feedback, please
+              email me.
             </AlertDescription>
           </Alert>
         </div>

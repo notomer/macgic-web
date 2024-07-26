@@ -82,19 +82,31 @@
   font-size: 20px;
   cursor: pointer;
   outline: none;
-  padding: 0 10px;
+  padding: 0 20px;
   color: #333;
-  transition: filter 0.3s ease, color 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .mic-button img {
-  width: 20px;
-  height: 20px;
-  filter: invert(100%);
-  transition: filter 0.3s ease;
-  
+  position: absolute;
+  transition: opacity 0.3s ease;
 }
 
-.mic-button.active img {
-  filter: brightness(0) saturate(100%) invert(32%) sepia(97%) saturate(2860%) hue-rotate(352deg) brightness(93%) contrast(99%);
+.mic-button .mic-white {
+  opacity: 1;
+}
+
+.mic-button .mic-orange {
+  opacity: 0;
+}
+
+.mic-button.active .mic-white {
+  opacity: 0;
+}
+
+.mic-button.active .mic-orange {
+  opacity: 1;
 }
