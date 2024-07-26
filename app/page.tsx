@@ -13,27 +13,26 @@ export default function Home() {
           <h2 className="text-5xl font-extrabold mb-4">
             Control your Mac simply by asking.
           </h2>
-          <div className="w-full flex justify-start">
+          <div className="relative w-full flex items-end justify-start">
             <GradientAnimation />
+            <span className="absolute top-0 right-0 px-1 py-2.5 border border-[#F56300] text-[#F56300] rounded-full inline-block" style={{ width: '10' }}>
+              Coming Soon
+            </span>
           </div>
         </div>
         <div className="w-full md:flex md:items-start md:justify-between">
           <div className="md:w-2/3 text-left">
             <p className="text-2xl mb-8">
-              We are looking for talent across all disciplines to solve new
-              challenges to increase our bandwidth for interfacing with the world.
-              Search open roles to see how you can contribute.
+              With MacGic, you can automate your Mac using voice or typed commands. No more navigating through menus or searching through folders within folders.
+            </p>
+            <p className="text-2xl mb-8">
+              Elevate your productivity with MacGic.
             </p>
             <div>
               <a href="#features" className="text-lg underline flex items-center">
-                See All Open Roles <span className="ml-2">↓</span>
+                Learn More <span className="ml-2">↓</span>
               </a>
             </div>
-          </div>
-          <div className="md:w-1/3 mt-6 md:mt-0 flex justify-end">
-            <span className="px-4 py-2 border border-[#F56300] text-[#F56300] rounded-full inline-block">
-              Coming Soon
-            </span>
           </div>
         </div>
       </main>
