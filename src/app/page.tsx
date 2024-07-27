@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-white text-gray-900">
       <Header />
-      <main className="flex flex-1 flex-col items-start justify-start px-4 py-10 mx-auto max-w-3xl mt-16 mb-16 md:mt-20 md:mb-20">
+      <main className="flex flex-1 flex-col items-start justify-start px-4 py-10 mx-auto max-w-3xl">
         <div className="w-full text-left mb-4">
           <h2 className="text-5xl font-extrabold mb-4">
             Control your Mac simply by asking.

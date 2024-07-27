@@ -38,50 +38,154 @@
   body {
     @apply bg-background text-foreground;
   }
-}
 
-/* Add media queries for responsiveness */
-@media (max-width: 768px) {
   .gradient-container {
+    position: relative;
+    width: 561px;
+    height: 48px;
+    border-radius: 24px;
+    overflow: hidden;
+    margin-bottom: 40px;
+  }
+
+  .gradient-background {
+    position: absolute;
     width: 100%;
-    height: auto;
-    border-radius: 16px;
-    margin-bottom: 20px;
+    height: 100%;
+    border-radius: 24px;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
   }
 
-  .text-output {
-    font-size: 14px;
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
 
-  .mic-button {
-    padding: 0 5px;
-  }
-
-  .header-content, .footer-content {
-    padding: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  .gradient-container {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    margin-bottom: 15px;
-  }
-
-  .text-output {
-    font-size: 12px;
-  }
-
-  .mic-button {
-    padding: 0 3px;
-    scale: 0.4;
-  }
-
-  .header-content, .footer-content {
-    padding: 5px;
-    flex-direction: column;
+  .content {
+    position: relative;
+    display: flex;
+    justify-content: center;
     align-items: center;
+    height: 100%;
+  }
+
+  .input-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0 10px;
+    background: transparent;
+  }
+
+  .text-output {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    flex-grow: 1;
+    padding: 0 10px;
+    background: transparent;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Menlo', monospace;
+  }
+
+  .typing-indicator {
+    font-size: 16px;
+    font-family: 'Menlo', monospace;
+    color: #007aff;
+    margin-left: 5px;
+    animation: blink 1s steps(1, end) infinite;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .typed-text {
+    font-size: 16px;
+    font-family: 'Menlo', monospace;
+  }
+
+  .mic-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    outline: none;
+    padding: 0 10px;
+    color: #333;
+    transition: filter 0.3s ease, color 0.3s ease;
+  }
+
+  .mic-button img {
+    width: 20px;
+    height: 20px;
+    transition: filter 0.3s ease;
+  }
+
+  .drawer-content {
+    background: white;
+  }
+
+  .header-content, .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .gradient-container {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      margin-bottom: 20px;
+    }
+
+    .text-output {
+      font-size: 14px;
+    }
+
+    .mic-button {
+      padding: 0 5px;
+    }
+
+    .header-content, .footer-content {
+      padding: 10px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .gradient-container {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    .text-output {
+      font-size: 12px;
+    }
+
+    .mic-button {
+      padding: 0 5px;
+      transform: scale(0.8);
+    }
+
+    .header-content, .footer-content {
+      padding: 5px;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 }

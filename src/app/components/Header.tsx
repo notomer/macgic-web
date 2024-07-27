@@ -1,20 +1,28 @@
 "use client";
 
-import * as React from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle } from "./drawer";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+} from "./drawer";
 import { Alert, AlertTitle, AlertDescription } from "./alert";
 import confetti from "canvas-confetti";
 
 const Header: React.FC = () => {
-  const [mounted, setMounted] = React.useState(false);
-  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
-  const [version, setVersion] = React.useState("1.0.0");
-  const [commitHash, setCommitHash] = React.useState("abcd1234");
-  const [showAlert, setShowAlert] = React.useState(false);
-  const [fadeOut, setFadeOut] = React.useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [version, setVersion] = useState("1.0.0");
+  const [commitHash, setCommitHash] = useState("abcd1234");
+  const [showAlert, setShowAlert] = useState(false);
+  const [fadeOut, setFadeOut] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setMounted(true);
 
     const fetchCommitDetails = async () => {
@@ -70,8 +78,8 @@ const Header: React.FC = () => {
   if (!mounted) return null;
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 w-full bg-white border-b border-gray-300">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
+    <header className="w-full py-4 bg-white border-b border-gray-300">
+      <div className="container mx-auto flex justify-between items-center px-4">
         <div className="flex items-center">
           <h1 className="text-2xl font-bold text-gray-800">MacGic</h1>
         </div>

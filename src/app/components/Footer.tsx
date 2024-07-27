@@ -60,9 +60,9 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="fixed bottom-0 left-0 right-0 z-50 w-full border-t border-gray-300 bg-[#F5F5F5]">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex flex-wrap justify-between mb-4">
+    <footer className="w-full py-6 border-t border-gray-300 bg-[#F5F5F5]">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-wrap justify-between">
           <div className="w-full md:w-1/3 mb-6 md:mb-0">
             <h3 className="text-sm font-thin text-gray-600 mb-2">MacGic</h3>
             <ul>
@@ -90,6 +90,7 @@ const Footer: React.FC = () => {
               Download
             </button>
           </div>
+          <div className="w-full text-center mt-6"></div>
         </div>
         <div className="flex justify-between items-center">
           <img src="/logo.png" alt="Logo" className="h-8" />
@@ -126,4 +127,4 @@ const Footer: React.FC = () => {
   );
 };
 
-export default Footer;
+export default Footer; 
